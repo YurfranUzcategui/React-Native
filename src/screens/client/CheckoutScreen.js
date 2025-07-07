@@ -16,6 +16,7 @@ import {
   Modal,
   Linking,
 } from 'react-native';
+import QRCode from 'react-native-qrcode-svg';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -456,7 +457,12 @@ const CheckoutScreen = ({ navigation, route }) => {
 
         <View style={styles.modalContent}>
           <View style={styles.qrContainer}>
-            <Ionicons name="qr-code" size={120} color="#2196F3" />
+            <QRCode
+              value={qrOrderData?.numeroAtencion || 'QR000000'}
+              size={200}
+              color="black"
+              backgroundColor="white"
+            />
             <Text style={styles.qrText}>Código QR generado</Text>
             <Text style={styles.qrNumber}>#{qrOrderData?.numeroAtencion}</Text>
             <Text style={styles.qrAmount}>
